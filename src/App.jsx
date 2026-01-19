@@ -1,11 +1,12 @@
 import React from 'react'
+import Navbar from './components/layout/Navbar';
 
 const App = () => {
-  return (
-     <header>
-       <h1 className='text-3xl text-red-400'>Global News</h1>
-     </header>
-  )
+	return (
+		<header>
+			<Navbar />
+		</header>
+	)
 }
 
 export default App;
