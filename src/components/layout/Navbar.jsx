@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 //TODO: Navbar Link for Desktop + Mobile -
 const navbarLinks = [
@@ -31,7 +32,7 @@ const Navbar = () => {
                     <ul className="hidden md:flex items-center gap-8">
                         {navbarLinks.map((link, id) => (
                             <li key={id} className="cursor-pointer hover:text-white font-bold font-mono text-cyan-300 text-base hover:underline">
-                                <a href={link.url}>{link.page}</a>
+                                <Link to={link.url}>{link.page}</Link>
                             </li>
                         ))}
                     </ul>
@@ -55,7 +56,7 @@ const Navbar = () => {
                 <ul className="flex flex-col gap-4 px-6 text-lg">
                     {navbarLinks.map((link, id) => (
                         <li key={id} className="cursor-pointer text-white hover:text-blue">
-                            <a href={link.url}>{link.page}</a>
+                            <Link to={link.url}>{link.page}</Link>
                         </li>
                     ))}
                 </ul>
