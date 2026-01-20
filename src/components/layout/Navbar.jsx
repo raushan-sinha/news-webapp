@@ -13,7 +13,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="w-full border-b border-gray-300 bg-white">
+        <nav className="fixed top-4 w-[95%] left-1/2 -translate-x-1/2 bg-[#0f172a] text-white z-50 rounded-xl">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
 
@@ -30,7 +30,7 @@ const Navbar = () => {
                     {/* Center: Navigation (Desktop) */}
                     <ul className="hidden md:flex items-center gap-8">
                         {navbarLinks.map((link, id) => (
-                            <li key={id} className="cursor-pointer hover:text-black font-bold font-mono text-gray-600 text-base hover:underline">
+                            <li key={id} className="cursor-pointer hover:text-white font-bold font-mono text-cyan-300 text-base hover:underline">
                                 <a href={link.url}>{link.page}</a>
                             </li>
                         ))}
@@ -44,20 +44,22 @@ const Navbar = () => {
 
                         {/* Mobile Menu Icon */}
                         <div className="md:hidden flex items-center justify-center" onClick={() => setMenuOpen(!menuOpen)}>
-                            {menuOpen ? <RxCross2 style={{ width: '30px', height: '30px', color: 'blue' }} /> : <IoMdMenu style={{ width: '30px', height: '30px', color: 'blue' }} />}
+                            {menuOpen ? <RxCross2 style={{ width: '30px', height: '30px', color: 'cyan' }} /> : <IoMdMenu style={{ width: '30px', height: '30px', color: 'cyan' }} />}
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Mobile Menu (UI only, always hidden for now) */}
-            <ul className="md:hidden hidden border-t border-gray-200 bg-white px-4 py-4 space-y-3 text-sm font-medium text-gray-600">
-                {navbarLinks.map((link, id) => (
-                    <li key={id} className="cursor-pointer hover:text-black">
-                        <a href={link.url}>{link.page}</a>
-                    </li>
-                ))}
-            </ul>
+            <div className={`md:hidden bg-[#101923] overflow-hidden ${menuOpen ? 'max-h-96 py-4' : 'max-h-0'}`}>
+                <ul className="flex flex-col gap-4 px-6 text-lg">
+                    {navbarLinks.map((link, id) => (
+                        <li key={id} className="cursor-pointer text-white hover:text-blue">
+                            <a href={link.url}>{link.page}</a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </nav>
     )
 }
