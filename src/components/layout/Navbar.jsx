@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 //TODO: Navbar Link for Desktop + Mobile -
 const navbarLinks = [
@@ -31,7 +31,7 @@ const Navbar = () => {
                     {/* Center: Navigation (Desktop) */}
                     <ul className="hidden md:flex items-center gap-8">
                         {navbarLinks.map((link, id) => (
-                            <li key={id} className="cursor-pointer hover:text-white font-bold font-mono text-cyan-300 text-base hover:underline">
+                            <li key={id} className={`${useMatch(link.url) ? 'text-cyan-400' : ''} cursor-pointer font-bold font-mono text-base hover:underline`}>
                                 <Link to={link.url}>{link.page}</Link>
                             </li>
                         ))}
