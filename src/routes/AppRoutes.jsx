@@ -1,19 +1,19 @@
 import React from 'react'
-import Navbar from '../components/layout/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../main-pages/Home';
 import Blog from '../main-pages/Blog';
+import MainLayout from '../components/layout/MainLayout';
 
 const AppRoutes = () => {
     return (
-            <BrowserRouter>
-                <Navbar />
-
-                <Routes>
+        <BrowserRouter>
+            <Routes>
+                <Route element={<MainLayout />}>
                     <Route path='/' element={<Home />} />
                     <Route path='/blog' element={<Blog />} />
-                </Routes>
-            </BrowserRouter>
+                </Route>
+            </Routes>
+        </BrowserRouter>
     )
 }
 
