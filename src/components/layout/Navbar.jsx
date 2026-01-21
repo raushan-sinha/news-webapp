@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { Link, useMatch } from 'react-router-dom';
+import { ThemeContext } from '../../context/ThemeContext';
 
 //TODO: Navbar Link for Desktop + Mobile -
 const navbarLinks = [
@@ -12,6 +13,7 @@ const navbarLinks = [
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { theme, setTheme } = useContext(ThemeContext);
 
     return (
         <nav className="fixed top-4 w-[95%] left-1/2 -translate-x-1/2 bg-[#0f172a] text-white z-50 rounded-xl border border-cyan-500">
@@ -39,8 +41,10 @@ const Navbar = () => {
 
                     {/* Right: Actions */}
                     <div className="flex items-center gap-4">
-                        <button className="sm:flex h-9 px-4 items-center rounded-md bg-black text-white text-sm font-medium cursor-pointer">
-                            Dark
+                        <button className="sm:flex h-9 px-4 items-center rounded-md bg-black text-white text-sm font-medium cursor-pointer"
+                            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+                        >
+                            {theme === 'light' ? 'Dark' : 'Light'}
                         </button>
 
                         {/* Mobile Menu Icon */}
