@@ -45,7 +45,7 @@ const Navbar = () => {
                         <button className="sm:flex h-9 px-4 items-center rounded-md text-black text-base font-bold cursor-pointer bg-amber-300 font-mono"
                             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                         >
-                            {theme === 'light' ? 'Dark' : 'Light'}
+                            {theme === 'light' ? 'Light' : 'Dark'}
                         </button>
 
                         {/* Mobile Menu Icon */}
