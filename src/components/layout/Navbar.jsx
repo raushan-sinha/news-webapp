@@ -23,10 +23,10 @@ const Navbar = () => {
 
                     {/* Left: Brand */}
                     <div className="flex items-center gap-2">
-                        <div className="h-8 w-8 text-2xl rounded-md bg-black text-white flex items-center justify-center font-bold font-mono">
+                        <div className="h-8 w-8 text-base md:text-3xl rounded-md bg-black text-white flex items-center justify-center font-bold font-mono">
                             D
                         </div>
-                        <span className="text-3xl font-semibold font-mono tracking-tight">
+                        <span className="text-base md:text-3xl font-semibold font-mono tracking-tight">
                             DailyBrief
                         </span>
                     </div>
