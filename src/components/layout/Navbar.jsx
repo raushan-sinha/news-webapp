@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-import { Link, useMatch } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
 
 //TODO: Navbar Link for Desktop + Mobile -
@@ -14,6 +14,7 @@ const navbarLinks = [
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const { theme, setTheme } = useContext(ThemeContext);
+    const location = useLocation();
 
     return (
         <nav className="fixed top-4 w-[95%] left-1/2 -translate-x-1/2 bg-[#0f172a] text-white z-50 rounded-xl border border-cyan-500">
@@ -33,7 +34,7 @@ const Navbar = () => {
                     {/* Center: Navigation (Desktop) */}
                     <ul className="hidden md:flex items-center gap-8">
                         {navbarLinks.map((link, id) => (
-                            <li key={id} className={`${useMatch(link.url) ? 'text-cyan-400 underline underline-offset-4' : ''} cursor-pointer font-medium font-mono text-xl`}>
+                            <li key={id} className={`${location.pathname === link.url ? 'text-cyan-400 underline underline-offset-4' : ''} cursor-pointer font-medium font-mono text-xl`}>
                                 <Link to={link.url}>{link.page}</Link>
                             </li>
                         ))}
