@@ -42,7 +42,7 @@ const Navbar = () => {
 
                     {/* Right: Actions */}
                     <div className="flex items-center gap-4">
-                        <button className="sm:flex h-9 px-4 items-center rounded-md bg-black text-white text-sm font-medium cursor-pointer"
+                        <button className="sm:flex h-9 px-4 items-center rounded-md text-black text-base font-bold cursor-pointer bg-amber-300 font-mono"
                             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
                         >
                             {theme === 'light' ? 'Dark' : 'Light'}
