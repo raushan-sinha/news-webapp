@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NEWSSERVICEAPI } from "../services/newsapiservice";
 import { Link } from "react-router-dom";
 
@@ -7,20 +7,24 @@ const Home = () => {
     const [error, setError] = useState("");
 
     //TODO: Logic to get API data for News -
-    const handleNewsResponse = async () => {
-        try {
-            const newsData = await NEWSSERVICEAPI(
-                `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=${import.meta.env.VITE_NEWS_API_KEY}`,
-            );
+    useEffect(() => {
+        const handleNewsResponse = async () => {
+            try {
+                const newsData = await NEWSSERVICEAPI(
+                    `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=${import.meta.env.VITE_NEWS_API_KEY}`,
+                );
 
-            if (newsData.articles) {
-                setNewsInfo(newsData.articles);
+                if (newsData.articles) {
+                    setNewsInfo(newsData.articles);
+                }
+            } catch (error) {
+                setError("Your Network connection is poor or disconnected.");
+                console.log("Something went wrong.", error);
             }
-        } catch (error) {
-            setError("Your Network connection is poor or disconnected.");
-            console.log("Something went wrong.", error);
-        }
-    };
+        };
+
+        handleNewsResponse();
+    }, [])
 
     return (
         <main className="py-20 min-h-screen">
@@ -70,11 +74,11 @@ const Home = () => {
                 <span className="text-red-500 font-mono font-bolder">{error}</span>
             )}
 
-            <button
+            {/* <button
                 className="bg-yellow-500 text-black px-3 py-2 cursor-pointer rounded-xl mt-20 top-3 left-3 fixed"
-                onClick={handleNewsResponse}>
+             onClick={handleNewsResponse}>
                 Get News
-            </button>
+            </button> */}
         </main>
     );
 };
