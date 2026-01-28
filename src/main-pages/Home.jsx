@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { NEWSSERVICEAPI } from "../services/newsapiservice";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -10,13 +9,14 @@ const Home = () => {
     useEffect(() => {
         const handleNewsResponse = async () => {
             try {
-                const newsData = await NEWSSERVICEAPI(
-                    `https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=${import.meta.env.VITE_NEWS_API_KEY}`,
-                );
+                // const response = await fetch(`https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=${import.meta.env.VITE_NEWS_API_KEY}`);
 
-                if (newsData.articles) {
-                    setNewsInfo(newsData.articles);
-                }
+                const response = await fetch(import.meta.env.VITE_NEWS_API);
+
+                if (!response.ok) throw new Error('News API isn`t fetching correctly.');
+                const data = await response.json();
+                setNewsInfo(data.articles);
+
             } catch (error) {
                 setError("Your Network connection is poor or disconnected.");
                 console.log("Something went wrong.", error);
